@@ -4,6 +4,46 @@ import Image from 'next/image';
 
 export default function ReserveMink() {
   const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+  });
+  const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('');
+    setLoading(true);
+
+    const data = new FormData();
+    data.append('access_key', 'd0a6e82b-70fd-42bc-bcf0-4911ece9ee97');
+    data.append('subject', 'Mink Reservation');
+    data.append('from_name', formData.name);
+    data.append('name', formData.name);
+    data.append('email', formData.email);
+    data.append('phone', formData.phone);
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data,
+    });
+
+    const result = await res.json();
+    setLoading(false);
+
+    if (result.success) {
+      setStatus('Reservation request submitted successfully!');
+      setFormData({ name: '', email: '', phone: '' });
+    } else {
+      setStatus('Something went wrong. Please try again.');
+    }
+  };
 
   return (
     <div className="relative min-h-screen w-full text-white overflow-hidden">
@@ -49,17 +89,24 @@ export default function ReserveMink() {
                   Reserve Now For Fully Refundable $200
                 </h2>
                 <button
-                  onClick={() => setShowForm(false)}
+                  onClick={() => {
+                    setShowForm(false);
+                    setStatus('');
+                  }}
                   className="text-sm text-gray-300 hover:underline"
                 >
                   ← Back
                 </button>
               </div>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm mb-1 text-gray-200">Your Full Name *</label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-transparent border-b border-gray-400 text-white focus:outline-none py-1"
                   />
                 </div>
@@ -67,6 +114,10 @@ export default function ReserveMink() {
                   <label className="block text-sm mb-1 text-gray-200">E-Mail Address *</label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-transparent border-b border-gray-400 text-white focus:outline-none py-1"
                   />
                 </div>
@@ -74,6 +125,10 @@ export default function ReserveMink() {
                   <label className="block text-sm mb-1 text-gray-200">Phone Number *</label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-transparent border-b border-gray-400 text-white focus:outline-none py-1"
                   />
                 </div>
@@ -83,10 +138,14 @@ export default function ReserveMink() {
                 </p>
                 <button
                   type="submit"
+                  disabled={loading}
                   className="bg-white text-black mt-4 w-full py-2 font-semibold hover:bg-gray-200 transition"
                 >
-                  Submit
+                  {loading ? 'Submitting...' : 'Submit'}
                 </button>
+                {status && (
+                  <p className="text-sm mt-2 text-lime-400">{status}</p>
+                )}
               </form>
             </>
           )}

@@ -27,7 +27,7 @@ export default function Footer() {
                             {[
                                 { label: 'Product', href: '/product' },
                                 { label: 'About us', href: '/about-us' },
-                                { label: 'Invest', href: '/invest' },
+                                { label: 'Invest', href: '/reserve ' },
                                 { label: 'Reserve', href: '/reserve' },
                             ].map((link, i) => (
                                 <li key={i}>
@@ -40,7 +40,6 @@ export default function Footer() {
                                 </li>
                             ))}
                         </ul>
-
                     </div>
 
                     {/* Help Links */}
@@ -63,36 +62,71 @@ export default function Footer() {
                     {/* Newsletter */}
                     <div>
                         <h4 className="font-semibold text-sm mb-4">Subscribe to Newsletter</h4>
-                        <div className="flex">
+                        <form
+                            action="https://api.web3forms.com/submit"
+                            method="POST"
+                            className="space-y-2"
+                        >
+                            <input type="hidden" name="access_key" value="d0a6e82b-70fd-42bc-bcf0-4911ece9ee97" />
+                            <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+
+                            <input
+                                type="text"
+                                name="name"
+                                required
+                                placeholder="Your Name"
+                                className="w-full p-2 rounded text-white bg-[#1c1c1c] placeholder-gray-400 focus:outline-none"
+                            />
+
                             <input
                                 type="email"
-                                placeholder="Enter email address"
-                                className="w-full p-2 rounded-l-md text-white bg-[#1c1c1c] placeholder-gray-400 focus:outline-none"
+                                name="email"
+                                required
+                                placeholder="Your Email"
+                                className="w-full p-2 rounded text-white bg-[#1c1c1c] placeholder-gray-400 focus:outline-none"
                             />
-                            <button className="bg-lime-400 text-black font-medium px-4 rounded-r-md hover:bg-lime-500 transition-all duration-200">
+
+                            <textarea
+                                name="message"
+                                required
+                                placeholder="Your Message"
+                                className="w-full p-2 rounded text-white bg-[#1c1c1c] placeholder-gray-400 focus:outline-none"
+                            ></textarea>
+
+                            <button
+                                type="submit"
+                                className="bg-lime-400 text-black font-medium px-4 py-2 rounded hover:bg-lime-500 transition-all duration-200"
+                            >
                                 Join
                             </button>
-                        </div>
+                        </form>
+
                         <div className="mt-5 text-sm text-gray-300">Follow us on</div>
                         <div className="flex space-x-4 mt-2 text-lg text-white">
-                            {[FaXTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaYoutube].map(
-                                (Icon, i) => (
-                                    <Icon
-                                        key={i}
-                                        className="cursor-pointer hover:text-lime-400 transition-colors duration-200"
-                                    />
-                                )
-                            )}
+                            {[
+                                { Icon: FaXTwitter, href: "https://x.com/MinkElectric" },
+                                { Icon: FaFacebookF, href: "https://www.facebook.com/profile.php?id=61566290847127" },
+                                { Icon: FaInstagram, href: "https://www.instagram.com/ev.mink/" },
+                                { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/minkev/" },
+                                { Icon: FaWhatsapp, href: "" },
+                                { Icon: FaYoutube, href: "https://www.youtube.com/@MinkEV" },
+                            ].map(({ Icon, href }, i) => (
+                                <a
+                                    key={i}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-lime-400 transition-colors duration-200"
+                                >
+                                    <Icon className="cursor-pointer" />
+                                </a>
+                            ))}
                         </div>
+
                     </div>
                 </div>
-
-                {/* Bottom copyright section */}
-                {/* Full-width white copyright section */}
-
-
-
             </footer>
+
             <div className="w-screen bg-white text-center text-xs text-gray-500 py-4 border-t border-gray-300">
                 © Copyright 2025, All Rights Reserved by MinkEV
             </div>

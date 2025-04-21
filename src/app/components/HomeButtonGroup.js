@@ -11,7 +11,7 @@ export default function HomeButtonGroup() {
       <button className="px-4 py-1 px-4 py-1 text-gray-500 hover:text-black hover:bg-black hover:text-white rounded-full hover:border-black">
         Home
       </button>
-      <button className="px-4 py-1 px-4 py-1 text-gray-500 hover:text-black hover:bg-black hover:text-white rounded-full hover:border-black">
+      <button onClick={() => router.push('/product')} className="px-4 py-1 px-4 py-1 text-gray-500 hover:text-black hover:bg-black hover:text-white rounded-full hover:border-black">
         Product
       </button>
       <button onClick={() => router.push('/about-us')} className="px-4 py-1 px-4 py-1 text-gray-500 hover:text-black hover:bg-black hover:text-white rounded-full hover:border-black">
