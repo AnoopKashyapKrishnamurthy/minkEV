@@ -1,5 +1,7 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   FaFacebookF,
   FaXTwitter,
@@ -10,10 +12,9 @@ import {
 } from "react-icons/fa6";
 import PrivacyPolicyContent from "../components/utils/PrivacyPolicyContent";
 
-
 export default function Footer() {
   const [formStatus, setFormStatus] = useState("");
-  const [modalContent, setModalContent] = useState(null); // null, "PRIVACY", "TERMS"
+  const [modalContent, setModalContent] = useState(null);
 
   const socialLinks = [
     { Icon: FaXTwitter, href: "https://x.com/MinkElectric" },
@@ -73,7 +74,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/mink_text.svg" alt="Mink EV Logo" className="h-10 invert" />
+            <Image src="/mink_text.svg" alt="Mink EV Logo" width={150} height={40} className="invert" />
           </div>
 
           {/* Address and Email */}
@@ -111,7 +112,7 @@ export default function Footer() {
           {/* Newsletter Subscription */}
           <div>
             <h4 className="font-semibold text-gray-400 text-xs mb-4 uppercase">Subscribe to Newsletter</h4>
-            <p className="mb-4">Learn more about India's first urban compact mini car (MINK)</p>
+            <p className="mb-4">Learn more about India&apos;s first urban compact mini car (MINK)</p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <input type="hidden" name="access_key" value="9dd6aae1-452f-459f-8cd2-f6d595cc9558" />
 
@@ -189,7 +190,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8" // Bigger size, adjust as needed
+                className="h-8 w-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -205,8 +206,6 @@ export default function Footer() {
 
             {/* Scrollable Content Area */}
             <div className="max-h-[80vh] overflow-y-auto p-6 pt-14">
-              {/* Added extra padding-top (pt-14) so text doesn't hide behind close button */}
-
               <h2 className="text-xl font-bold mb-4">
                 {modalContent === "PRIVACY" ? "Mink EV" : "Mink EV"}
               </h2>
@@ -229,7 +228,6 @@ export default function Footer() {
           </div>
         </div>
       )}
-
     </div>
   );
 }
