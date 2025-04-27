@@ -1,4 +1,5 @@
 'use client';
+import BestRangeDesign from './BestRangeDesign';
 import CustomerInsights from './CustomerInsights';
 import FeatureGrid from './FeatureGrid';
 import Footer from './Footer';
@@ -16,10 +17,11 @@ export default function HomePage() {
       <div><HomeLanding /></div>
       <div><TrafficCarousel></TrafficCarousel></div>
       <div><CustomerInsights></CustomerInsights></div>
-      <div><FeatureGrid></FeatureGrid></div>
+      <div><BestRangeDesign></BestRangeDesign></div>
+      {/* <div><FeatureGrid></FeatureGrid></div> */}
       <div><VisionSection></VisionSection></div>
       {/* <div><LampDemo></LampDemo></div> */}
-      <div><TrustedBySection></TrustedBySection></div>
+      {/* <div><TrustedBySection></TrustedBySection></div> */}
       <div><Footer></Footer></div>
     </div>
   );

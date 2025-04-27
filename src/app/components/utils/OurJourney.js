@@ -1,23 +1,30 @@
-'use client'; // only if you're using app router
+"use client";
 
 export default function OurJourney() {
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-start px-6 md:px-24"
+      className="relative min-h-screen bg-cover bg-center flex items-center justify-start px-6 md:px-24"
       style={{ backgroundImage: "url('/Ourjourney-bg-image.png')" }}
     >
-      <div className="max-w-2xl text-black">
-        <h1 className="text-3xl md:text-4xl font-semibold mb-6">Our journey</h1>
+      {/* Light overlay for readability */}
+      <div className="absolute inset-0 bg-white/30" />
 
-        <p className="text-lg leading-relaxed">
-          The Team Behind MINK EV, Inspired By The{' '}
-          <strong>Everyday Struggles Of Urban Mobility</strong>, Wanted To Create Something Better.
-          They Saw How Traditional Cars Were Over-Engineered, Too Big, And Inefficient For The Way
-          People Really Use Them. Driven By The Desire To Make A Real Difference, They Set Out To{' '}
-          <strong>Build A Solution That Was Compact, Practical, And Sustainable.</strong>
+      {/* Content */}
+      <div className="relative max-w-3xl text-black py-12">
+        <h1 className="text-4xl md:text-5xl font-semibold mb-6">
+          Our Journey
+        </h1>
+
+        <p className="text-lg md:text-xl leading-relaxed">
+          The team behind <span className="font-bold">MINK EV</span>, inspired by the{' '}
+          <strong>everyday struggles of urban mobility</strong>, set out to create something better.
+          They realized traditional cars were <strong>over-engineered</strong>, too big, and inefficient
+          for the real needs of urban life. Driven by a desire to make a real difference, they embarked on
+          a mission to <strong>build a compact, practical, and sustainable solution</strong> for the future.
         </p>
 
-        <p className="mt-6 text-sm underline cursor-pointer">Read full story &gt;&gt;</p>
+        {/* Optional read more link */}
+        {/* <p className="mt-6 text-sm underline cursor-pointer">Read full story &gt;&gt;</p> */}
       </div>
     </div>
   );

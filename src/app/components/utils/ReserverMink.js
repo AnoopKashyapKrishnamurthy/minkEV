@@ -22,7 +22,7 @@ export default function ReserveMink() {
     setLoading(true);
 
     const data = new FormData();
-    data.append('access_key', 'd0a6e82b-70fd-42bc-bcf0-4911ece9ee97');
+    data.append('access_key', '9dd6aae1-452f-459f-8cd2-f6d595cc9558');
     data.append('subject', 'Mink Reservation');
     data.append('from_name', formData.name);
     data.append('name', formData.name);

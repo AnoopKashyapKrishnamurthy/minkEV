@@ -17,6 +17,11 @@
     --foreground: #ededed;
   }
 }
+.slick-active .custom-dot {
+  background-color: #d9f99d !important; /* Lime green */
+  opacity: 1 !important;
+  width: 2rem !important;
+}
 
 body {
   background: var(--background);

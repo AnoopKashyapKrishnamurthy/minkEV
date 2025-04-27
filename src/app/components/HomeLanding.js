@@ -1,71 +1,62 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import HomeButtonGroup from './HomeButtonGroup';
 import { useRouter } from 'next/navigation';
 
 export default function HomeLanding() {
   const router = useRouter();
+
+  // List of images for the slideshow
+  const images = [
+    '/car1.png',
+    '/car2.png',
+    '/car3.png',
+    '/car4.png',
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  // Auto slide every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent(prev => (prev + 1) % images.length); // Cycle through images
+    }, 3000);
+
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, []);
+
+  // Handle navigation for the buttons
+  const handleNavigation = (path) => {
+    router.push(path);
+  };
+
   return (
     <div className="relative min-h-screen bg-black text-white flex items-center justify-center px-4">
       {/* Main Content */}
-      <div className="text-center pt-24 w-full max-w-5xl">
+      <div className="text-center pt-10 w-full max-w-5xl">
         {/* Heading */}
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-          Changing the{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500">
-            future
-          </span>{" "}
-          of mobility
+        <h1 className="text-4xl md:text-5xl font-bold leading-tight text-blue-400 text-center">
+          <span className="text-blue-400">Changing The</span>{" "}
+          <span className="relative text-blue-500">
+            <span className="absolute inset-0 blur-md opacity-30 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-lg"></span>
+            <span className="relative">Future Mobility</span>
+          </span>
         </h1>
+
         <p className="text-gray-400 mt-3 text-lg">Next generation compact car</p>
 
-        {/* Car Image with Play Button */}
+        {/* Car Image (Slideshow) */}
         <div className="relative mt-10">
           <Image
-            src="/HomeCar.png"
+            src={images[current]}
             alt="Covered Car Teaser"
             width={900}
             height={500}
-            className="w-full h-auto rounded-xl brightness-75"
+            className="w-full h-auto rounded-xl brightness-75 transition-opacity duration-1000 ease-in-out transform scale-x-[-1]"
           />
-          <button
-            aria-label="Play Teaser"
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl">
-              ▶
-            </div>
-          </button>
         </div>
 
-        {/* Bottom Navigation Buttons */}
-        <div className="absolute bottom-16 left-0 right-0 flex justify-center px-4">
-          <div className="flex flex-wrap gap-4 justify-center items-center">
-            {/* Desktop Button Group */}
-            <div className="hidden sm:flex items-center bg-white px-4 py-2 rounded-full shadow-lg space-x-3">
-              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center invert hover:invert-0">
-                <Image
-                  src="/Animal_logo.svg"
-                  alt="Mink EV Logo"
-                  width={30}
-                  height={30}
-                  className="w-8 h-8"
-                />
-              </div>
-              <HomeButtonGroup />
-            </div>
 
-            {/* Mobile: Reserve Now */}
-            <button onClick={() => router.push('/reserve')} className="block sm:hidden px-5 py-2 text-black bg-white border rounded-full transition hover:bg-red-500 hover:text-white">
-              Reserve now
-            </button>
-
-            {/* Invest Button */}
-            <button onClick={() => router.push('/about-us#contact')} className="px-5 py-2 text-white bg-white/5 border border-red-500 rounded-full transition hover:bg-red-500 hover:text-white">
-              Invest in Mink EV
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

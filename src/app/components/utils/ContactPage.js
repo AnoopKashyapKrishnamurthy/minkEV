@@ -23,7 +23,7 @@ export default function ContactPage() {
     setLoading(true);
 
     const formData = new FormData();
-    formData.append('access_key', 'd0a6e82b-70fd-42bc-bcf0-4911ece9ee97');
+    formData.append('access_key', '9dd6aae1-452f-459f-8cd2-f6d595cc9558');
 
     Object.entries(form).forEach(([key, value]) => {
       formData.append(key, value);
@@ -60,18 +60,14 @@ export default function ContactPage() {
         </h1>
 
         <div>
-          <p className="font-semibold text-lg">09876 543 210</p>
-          <p className="text-sm text-gray-700">Info@Minkev.Co.Uk</p>
+          
+          <p className="text-sm text-gray-700">Info@Minkev.com</p>
         </div>
 
         <div className="space-y-4">
-          <div>
-            <p className="font-semibold">Worcester, UK</p>
-            <p className="text-sm text-gray-600">70 st.philips avenue<br />worcester park, kt4 8la</p>
-          </div>
+          
           <div>
             <p className="font-semibold">Bengaluru, KA</p>
-            <p className="text-sm text-gray-600">mini forest jp nagar,<br />bengaluru, ka</p>
           </div>
         </div>
       </div>

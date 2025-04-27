@@ -21,7 +21,7 @@ export default function AboutUsPage() {
         <div id='team'><TeamGrid></TeamGrid></div>
         <div id='mission'><MissionSection></MissionSection></div>
         <div id='careers'><CareersSection></CareersSection></div>
-        <div><TrustedBySection></TrustedBySection></div>
+        {/* <div><TrustedBySection></TrustedBySection></div> */}
         <div id='contact'><ContactPage></ContactPage></div>
         <div><Footer></Footer></div>
       </div>

@@ -12,8 +12,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "MinkEV ",
+  title: "Mink EV ",
   description: "Changing the future of mobility",
+  icons: {
+    icon: '/Animal_logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -7,27 +7,28 @@ export default function ProductFeatures() {
       src: "/prodimage1.png",
       alt: "Stylish",
       title: "STYLISH",
-      description: "Mini E.V is a Next Gen Electric Vehicle Company in UK And INDIA.",
+      description: "Designed with sleek lines and modern aesthetics, Mini E.V redefines urban elegance in the U.K. and India.",
     },
     {
       src: "/prodimage2.png",
       alt: "Affordable",
       title: "AFFORDABLE",
-      description: "Mini E.V is a Next Gen Electric Vehicle Company in UK And INDIA.",
+      description: "Offering premium electric mobility at a price within reach, Mini E.V makes sustainability accessible to everyone.",
     },
     {
       src: "/prodimage3.png",
       alt: "Reliable",
       title: "RELIABLE",
-      description: "Mini E.V is a Next Gen Electric Vehicle Company in UK And INDIA.",
+      description: "Built with robust engineering and cutting-edge technology, Mini E.V ensures a dependable ride every time.",
     },
     {
       src: "/prodimage4.png",
       alt: "Manoeuvrable",
       title: "MANOEUVRABLE",
-      description: "Mini E.V is a Next Gen Electric Vehicle Company in UK And INDIA.",
+      description: "Compact and agile, Mini E.V is perfectly crafted for smooth navigation through crowded city streets.",
     },
   ];
+
 
   return (
     <div className="bg-gray-100 py-12 px-6 sm:px-12">
